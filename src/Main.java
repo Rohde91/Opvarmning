@@ -1,3 +1,4 @@
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
@@ -16,16 +17,36 @@ public class Main {
         double sum = x + y;
         double result = sum / counts;
         System.out.println("Gennemsnittet af de indtastede tal er: " + result);
+        System.out.println("Indtast endnu et tal: ");
 
         int i = 0;
         while ( i >= 0) {
 
-            System.out.println("Indtast endnu et tal: ");
-            y = scanner.nextInt();
-            sum = sum + y;
-            result = sum / ++counts;
-            System.out.println("Gennemsnittet af de indtastede tal er: " + result);
+            if (scanner.hasNextInt()) {
 
+                y = scanner.nextInt();
+                sum = sum + y;
+                result = sum / ++counts;
+                System.out.println("Gennemsnittet af de indtastede tal er: " + result);
+                System.out.println("Indtast endnu et tal: ");
+
+            }
+
+            else {
+
+                char ch = scanner.next().toUpperCase(Locale.ROOT).charAt(0);
+
+                if (Character.toString(ch).matches("Q")) {
+                    System.out.println("Slutter...");
+                    break;
+                }
+
+                else {
+
+                    System.out.println("Der er sket en fejl! Der kan kun indtastes tal. Er du færdig med at beregne skriv da Q eller q");
+
+                }
+            }
         }
     }
 }
